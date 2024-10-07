@@ -1,0 +1,8 @@
+*.meta
+Assets/TextMesh Pro/
+Library/
+Temp/
+UserSettings/
+ProjectSettings/
+Packages/
+Logs/
