@@ -27,12 +27,12 @@ public class Collector : MonoBehaviour
     {
         if (transform.position == mover.destination)
         {
-            mover.ReverseMotion();
-        }
+            if (mover.destination == collectionPosition)
+            {
+                team.OnResourceCollected();
+            }
 
-        if (transform.position == collectionPosition)
-        {
-            team.OnResourceCollected();
+            mover.ReverseMotion();
         }
     }
 

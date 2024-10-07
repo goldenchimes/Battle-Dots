@@ -19,6 +19,8 @@ public class Base : MonoBehaviour
 
     Player player;
 
+    List<GameObject> units = new List<GameObject>();
+
     void Awake()
     {
         GetComponent<TeamMember>().color = color;
@@ -36,6 +38,8 @@ public class Base : MonoBehaviour
             unit.color = color;
 
             UpdateResources(-1);
+
+            units.Add(unit.gameObject);
         }
         else
         {
@@ -102,5 +106,27 @@ public class Base : MonoBehaviour
         }
 
         return null;
+    }
+
+    void Update()
+    {
+        for (int i = units.Count - 1; i >= 0; i--)
+        {
+            if (!units[i])
+            {
+                units.RemoveAt(i);
+            }
+        }
+    }
+
+    void OnDestroy()
+    {
+        foreach (GameObject unit in units)
+        {
+            if (unit)
+            {
+                Destroy(unit);
+            }
+        }
     }
 }
